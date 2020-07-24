@@ -1,6 +1,7 @@
 <?php
 
 
+use app\helpers\CurrencyHelper;
 use app\models\Order;
 
 /* @var $this yii\web\View */
@@ -25,10 +26,10 @@ $this->title = 'Pizza shop';
             <p class="client-surname"><?=$order->client_surname?></p>
             <p class="client-address"><?=$order->client_address?></p>
             <p class="client-email"><?=$order->client_email?></p>
-            <p class="totalPrice"><?=$order->getTotalPrice()?> USD</p>
+            <p class="totalPrice"><?=CurrencyHelper::getPrice($order->getTotalPrice())?> <?=CurrencyHelper::getCurrencyName()?></p>
             <ul class="orderList">
                 <?php foreach ($order->orderItems as $orderItem):?>
-                <li><?=$orderItem->product->name . ' x' . $orderItem->quantity . ' - ' . $orderItem->quantity * $orderItem->product->price?> USD</li>
+                <li><?=$orderItem->product->name . ' x' . $orderItem->quantity . ' - ' . CurrencyHelper::getPrice($orderItem->quantity * $orderItem->product->price)?> <?=CurrencyHelper::getCurrencyName()?></li>
                 <?php endforeach;?>
             </ul>
         </div>
