@@ -32,10 +32,8 @@ class CurrencyHelper
     }
 
     public static function getPrice($price) {
-        if((int)self::getCurrency() === self::CURRENCY_USD)
-            return $price;
-        else if ((int)self::getCurrency() === self::CURRENCY_EUR)
+        if ((int)self::getCurrency() === self::CURRENCY_EUR)
             return round($price * self::COEFFICIENT, 2);
-        return null;
+        return $price;
     }
 }
