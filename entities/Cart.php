@@ -41,7 +41,7 @@ class Cart extends \yii\base\BaseObject
     }
 
     public function getQuantity($product_id) {
-        return isset($this->products[$product_id])?$this->products[$product_id]:0;
+        return isset($this->products[$product_id])?((int)$this->products[$product_id]):0;
     }
 
     /**
